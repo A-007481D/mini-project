@@ -3,14 +3,13 @@
 #include <string.h>
 
 void welcome() {
-    printf("\tBonjour!\n");
+    printf("\n\tBonjour!\n");
     printf("*");
     printf("\n0: exit\n1: ajouter un livre\n2: afficher les livres\n3: update livre\n4: delete livre\n5: afficher le nombre du livre et du stock\n");
 }
 
 void  ajouter(char titre[][100], char auteur[][100], float prix[], int quantite[], int count)
 {
-    printf("%d\n", count);
     printf ("titre : ");
     scanf ("%s", titre[count]);
     printf ("auteur : ");
@@ -43,6 +42,16 @@ void update(char titre[][100], int quantite[], int count, char word[], int toAdd
     }
 }
 
+void delete(char titre[][100] , char auteur[][100] , float prix[], int quantite[] , int c, char word[]) {
+    int i;
+    for (i = 0; i < c; i++) {
+        if (!(strcmp(titre[i], word)  == 0)) {
+            printf("%s\n", titre[i]);
+            // TODO: update the array
+        }
+    }
+}
+
 int main() {
     int choix;
     int c = 0;
@@ -51,8 +60,9 @@ int main() {
     char auteur[10][100];
     float prix[10];
     int quantite[10];
-    welcome();
+
     while(1) {
+        welcome();
         printf("Entee votre choix: ");
         scanf("%d", &choix);
         switch (choix) {
@@ -74,7 +84,11 @@ int main() {
                 update(titre, quantite, c, word, new);
                 break;
             case 4:
-                // TODO: delete() function;
+                char mot[100];
+                printf("Enter the titre to delete: ");
+                scanf("%s", mot);
+                delete(titre ,auteur, prix, quantite, c, mot);
+                c--;
                 break;
             case 5:
                 // TODO: afficher nombre des livres et total du stock
