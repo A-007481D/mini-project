@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 void welcome() {
     printf("\tBonjour!\n");
     printf("*");
-    printf("\n0: exit\n1: ajouter un livre\n2: afficher les livres\n3: Cherche un livre\n4: update livre\n5: delete livre\n6: afficher le nombre du livre et du stock\n");
+    printf("\n0: exit\n1: ajouter un livre\n2: afficher les livres\n3: update livre\n4: delete livre\n5: afficher le nombre du livre et du stock\n");
 }
 
 void  ajouter(char titre[][100], char auteur[][100], float prix[], int quantite[], int count)
@@ -30,6 +31,18 @@ void afficher(char titre[][100], char auteur[][100], float prix[], int quantite[
     printf("\n");
 }
 
+void update(char titre[][100], int quantite[], int count, char word[], int toAdd) {
+    int i;
+
+    for (i = 0; i < count; i++) {
+        if (strcmp(titre[i], word) == 0) {
+            quantite[i] += toAdd;
+        } else {
+            printf("There is no such Book");
+        }
+    }
+}
+
 int main() {
     int choix;
     int c = 0;
@@ -52,16 +65,19 @@ int main() {
                 afficher(titre, auteur, prix, quantite, c);
                 break;
             case 3:
-                // Call func
+                char word[100];
+                int new;
+                printf("Enter the titre: ");
+                scanf("%s", word);
+                printf("Enter how to much to Add: ");
+                scanf("%d", &new);
+                update(titre, quantite, c, word, new);
                 break;
             case 4:
                 // Call func
                 break;
             case 5:
                 // Call func
-                break;
-            case 6:
-                // Calfunc
                 break;
             case 0:
                 printf("exit...\n");
