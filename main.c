@@ -43,11 +43,16 @@ void update(char titre[][100], int quantite[], int count, char word[], int toAdd
 }
 
 void delete(char titre[][100] , char auteur[][100] , float prix[], int quantite[] , int c, char word[]) {
-    int i;
+    int i, j;
     for (i = 0; i < c; i++) {
-        if (!(strcmp(titre[i], word)  == 0)) {
-            printf("%s\n", titre[i]);
-            // TODO: update the array
+        if (strcmp(titre[i], word) == 0) {
+            for (j = i; j < c - 1; j++) {
+                strcpy(titre[j], titre[j + 1]);
+                strcpy(auteur[j], auteur[j + 1]);
+                prix[j] = prix[j + 1];
+                quantite[j] = quantite[j + 1];
+            }
+            break;
         }
     }
 }
@@ -91,7 +96,8 @@ int main() {
                 c--;
                 break;
             case 5:
-                // TODO: afficher nombre des livres et total du stock
+                // calcule(titre, quantite, c);
+                // TODO: Make a function to calculate the number of livre (c) , accumulate the quantité
                 break;
             case 0:
                 printf("exit...\n");
