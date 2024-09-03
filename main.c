@@ -9,14 +9,15 @@ void welcome() {
 
 void  ajouter(char titre[][100], char auteur[][100], float prix[], int quantite[], int count)
 {
+    printf("%d\n", count);
     printf ("titre : ");
-    scanf ("%s", titre);
+    scanf ("%s", titre[count]);
     printf ("auteur : ");
-    scanf ("%s", &auteur);
+    scanf ("%s", auteur[count]);
     printf ("prix : ");
-    scanf ("%f", &prix);
+    scanf ("%f", &prix[count]);
     printf ("quantite : ");
-    scanf ("%d", &quantite);
+    scanf ("%d", &quantite[count]);
 }
 
 void afficher(char titre[][100], char auteur[][100], float prix[], int quantite[], int count)
@@ -24,7 +25,7 @@ void afficher(char titre[][100], char auteur[][100], float prix[], int quantite[
     printf("\nListe des livres :\n");
     for (int i = 0; i < count; i++)
     {
-        printf("\n| Titre : %s | Auteur : %s | Prix :  %f | Quantite : %d |", titre[i], auteur[i], prix[i], quantite[i]);
+        printf("\n| Titre : %s | Auteur : %s | Prix :  %.2f | Quantite : %d |", titre[i], auteur[i], prix[i], quantite[i]);
     }
     printf("\n");
 }
@@ -44,30 +45,29 @@ int main() {
         switch (choix) {
             case 1:
                 ajouter(titre, auteur, prix, quantite, c);
-            c++;
-            break;
+                c++;
+                break;
             case 2:
                 printf("Count: %d\n", c);
-            afficher(titre, auteur, prix, quantite, c);
-            break;
+                afficher(titre, auteur, prix, quantite, c);
+                break;
             case 3:
                 // Call func
-                    break;
+                break;
             case 4:
                 // Call func
-                    break;
+                break;
             case 5:
                 // Call func
-                    break;
+                break;
             case 6:
                 // Calfunc
-                    break;
+                break;
             case 0:
-                printf("exit...");
-            exit(0);
+                printf("exit...\n");
+                exit(0);
             default:
                 printf("Default!");
-
         }
     }
     return (0);
