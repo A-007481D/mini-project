@@ -74,10 +74,10 @@ int main() {
                 update(titre, quantite, c, word, new);
                 break;
             case 4:
-                // Call func
+                // TODO: delete() function;
                 break;
             case 5:
-                // Call func
+                // TODO: afficher nombre des livres et total du stock
                 break;
             case 0:
                 printf("exit...\n");
