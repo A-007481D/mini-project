@@ -57,6 +57,15 @@ void delete(char titre[][100] , char auteur[][100] , float prix[], int quantite[
     }
 }
 
+void calcule(int quantite[], int count) {
+    int i, total = 0;
+    for (i = 0; i < count; i++) {
+        total += quantite[i];
+    }
+    printf("Total Books in storage: %d\n", count);
+    printf("Total quantité: %d\n", total);
+}
+
 int main() {
     int choix;
     int c = 0;
@@ -96,8 +105,7 @@ int main() {
                 c--;
                 break;
             case 5:
-                // calcule(titre, quantite, c);
-                // TODO: Make a function to calculate the number of livre (c) , accumulate the quantité
+                calcule(quantite, c);
                 break;
             case 0:
                 printf("exit...\n");
